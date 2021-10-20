@@ -214,3 +214,151 @@ function contador(valor) {
     }
 }
 
+//ejercicio 8
+
+function chimuela() {
+    this.comida = 0
+    this.energia = 0
+
+    this.comer = function (gramos) {
+        this.comida += gramos
+        this.energia += gramos * 4
+    }
+
+    this.volar = function (kilometros) {
+        if (energia >= (kilometros + 20)) {
+            energia -= (kilometros + 20)
+            this.comida -= Math.floor((kilometros + 20) / 4)
+        }
+        else
+            console.log("energia insuficiente")
+    }
+
+    this.energia = function () {
+        console.log(`energia: ${this.energia}`)
+    }
+
+    // ejercicio 9
+    this.estaDebil = function () {
+        if (this.energia < 50)
+            return true
+        else
+            return false
+    }
+    this.estaFeliz = function () {
+        if (this.energia >= 500 && this.energia <= 1000)
+            return true
+        else
+            return false
+    }
+    this.quiereVolar = function () {
+        if (this.energia >= 300 && this.energia <= 400)
+            return (this.energia / 5)
+        else
+            return (this.energia / 5) + 10
+
+    }
+
+}
+
+// ejercicio 10 
+
+function calculadora(numero) {
+    this.memoria = numero
+    this.cargarNumero = function (numero) {
+        this.memoria = numero
+    }
+    this.sumar = function (num) {
+        return num + this.memoria
+    }
+    this.restar = function (num) {
+        return num - this.memoria
+    }
+    this.multiplicar = function (num) {
+        return num * this.memoria
+    }
+    this.valorActual = function () {
+        return this.memoria
+    }
+}
+
+// ejercicio 11
+
+function libro(titulo, numero, prestados) {
+    this.titulo = titulo
+    this.numero = numero
+    this.prestados = prestados
+    this.prestamo = function () {
+        if (this.numero >= 1) {
+            this.numero--
+            this.prestados++
+            return true
+        }
+        else
+            console.log()
+            return false
+    }
+    this.devolucion=function(){
+        if (this.prestados >= 1){
+            this.prestados--
+            this.numero++
+            return true
+        } else {
+            console.log("no se han prestado libros")
+            return false
+        }
+    }
+    this.toString= function(){
+        return `titulo:${this.titulo}; número:${this.numero}; prestados:${this.prestados}}`
+    }
+}
+
+// ejercicio 12
+function Enterprice(potencia, coraza) {
+    this.potencia = potencia
+    this.coraza = coraza
+    this.potenciaPila = function () {
+        if ((this.potencia + 25) > 100)
+            this.potencia = 100
+        else
+            this.potencia += 25
+    }
+
+    this.encontrarEscudo = function () {
+        if ((this.coraza + 10) > 20)
+            this.coraza = 20
+        else
+            this.coraza += 10
+    }
+
+    this.reciberAtaque = function (fuerza) {
+        this.coraza -= fuerza
+        if (this.coraza < 0) {
+            this.potencia += this.coraza
+            if (this.potencia < 0)
+                this.potencia = 0
+            this.coraza = 0
+        }
+    }
+
+    // Ejercicio 13
+    this.fortalezaDefensiva = function () {
+        return this.potencia + this.coraza
+    }
+    this.necesitarFortalecerse = function () {
+        if (this.coraza = 0 && this.potencia <= 20)
+            return true
+        else
+            return false
+
+    }
+    this.fortalezaDefensiva= function(){
+        if (this.potencia < 20)
+            return 0
+        else
+            return (this.potencia - 20)/2
+    }
+
+}
+
+
